@@ -4,9 +4,11 @@ let cp = require('child_process');
 let proxies = fs.readFileSync(config.proxyFile).toString().split('\n');
 
 proxies.forEach(proxy => {
+    let timeBeforeChecking = new Date().getTime();
     proxyRequest(config.testurl , `${config.proxyType}://${proxy}`)
     .then(body => {
-        console.log(`[+] ${proxy}`)
+        let currentTime = new Date().getTime();
+        console.log(`[+] ${proxy}\n    =>${(currentTime-timeBeforeChecking).toString()}ms`)
         cp.exec(`echo ${proxy} >> ${config.outputFile}`)
     })
     .catch(e => {
