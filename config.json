@@ -1,0 +1,7 @@
+{
+    "proxyType":"socks4",
+    "proxyFile":"./proxies.txt",
+    "outputFile":"working.txt",
+    "errorFile":"failed.txt",
+    "testurl":"https://google.com"
+}
